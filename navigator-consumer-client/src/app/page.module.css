@@ -1,0 +1,21 @@
+/* Background container using your CSS variable-based theme */
+.background {
+  @apply relative flex items-center justify-center min-h-screen bg-background overflow-hidden;
+}
+
+/* Glassmorphism welcome box using theme variables */
+.welcomeBox {
+  @apply relative z-10 text-center p-8 bg-white/10 backdrop-blur-md border border-primary rounded-2xl shadow-xl w-full max-w-lg;
+}
+
+/* Subtitle using your theme’s muted foreground color */
+.subtitle {
+  @apply text-lg text-muted-foreground mt-6 mb-6;
+}
+
+
+ /* Button Styles using theme colors */
+ .button {
+  @apply w-full sm:w-1/2 py-3 text-sm font-medium text-white uppercase tracking-wider bg-primary rounded-lg shadow-lg hover:shadow-primary/40 transition-transform transform hover:-translate-y-1;
+}
+

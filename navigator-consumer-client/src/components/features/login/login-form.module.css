@@ -1,0 +1,52 @@
+/* Background container using your CSS variable-based theme */
+.background {
+  @apply relative flex items-center justify-center min-h-screen bg-background overflow-hidden;
+}
+
+
+
+/* Glassmorphism login box using theme variables */
+.loginBox {
+  @apply relative z-10 w-full max-w-md bg-card/10 backdrop-blur-lg border border-primary rounded-2xl p-8 shadow-xl;
+}
+
+
+/* Input Group Styles */
+.inputGroup {
+  @apply mt-6 mb-6;
+}
+
+/* Label styling */
+.label {
+  @apply block mb-2 text-sm font-bold tracking-widest text-primary;
+}
+
+/* Input styling */
+.input {
+  @apply w-full px-4 py-3 bg-white/5 border border-muted-foreground rounded-lg text-primary placeholder-gray-400 focus:outline-none focus:border-primary focus:bg-white/10 transition;
+}
+
+/* Button Styles using theme colors */
+.button {
+  @apply w-full py-3 text-sm font-medium text-white uppercase tracking-wider bg-primary rounded-lg shadow-lg hover:shadow-primary/40 transition-transform transform hover:-translate-y-1;
+}
+
+/* Form Errors Styling */
+.formErrors {
+  @apply mt-4 text-red-500 list-disc list-inside;
+}
+
+/* Adjustments for medium screens and above */
+@media (min-width: 768px) {
+  .loginBox {
+    @apply p-10;
+  }
+
+  .input {
+    @apply px-6 py-4;
+  }
+
+  .button {
+    @apply py-4;
+  }
+}

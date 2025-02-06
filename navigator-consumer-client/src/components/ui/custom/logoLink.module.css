@@ -1,0 +1,14 @@
+/* Logo Container Styles */
+.logo {
+  @apply flex items-center justify-center transition-transform transform hover:-translate-y-1;
+}
+.logo:hover {
+  text-shadow: 0 4px 10px rgba(75, 85, 199, 0.6);
+}
+/* Logo Image Styles */
+.logoImg {
+  @apply w-12 h-12 mr-2; /* Adjust width, height, and margin as needed */
+}
+.logoText {
+  @apply text-4xl font-bold uppercase tracking-widest text-primary;
+}

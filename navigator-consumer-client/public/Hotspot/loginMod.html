@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet Hotspot - Log in</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Other themes -->
+    <!-- <body class="lite"> -->
+    <!-- <body class="dark"> -->
+
+    <!-- Hidden form for CHAP authentication -->
+    $(if chap-id)
+    <form
+      name="sendin"
+      action="$(link-login-only)"
+      method="post"
+      style="display: none">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+    $(endif)
+
+    <script src="/md5.js"></script>
+    <script>
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          '$(chap-id)' + document.login.password.value + '$(chap-challenge)'
+        );
+        document.sendin.submit();
+        return false;
+      }
+    </script>
+
+    <div class="ie-fixMinHeight">
+      <div class="main">
+        <div class="wrap animated fadeIn">
+          <form
+            name="login"
+            action="$(link-login-only)"
+            method="post"
+            $(if
+            chap-id)onsubmit="return doLogin()"
+            $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+
+            <!-- Logo -->
+            <svg
+              class="logo"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 174 42">
+              <path
+                fill="#fff"
+                d="M7.32 13.66L0 41.74 3.12 41.74 9.49 15.94 9.58 15.94 15.01 41.74 18.22 41.74 36.86 16.34 36.95 16.34 30.02 41.74 33.18 41.74 40.4 13.66 35.73 13.66 17.23 38.87 11.99 13.66 7.32 13.66zM43.43 21.45L38.19 41.74 41.16 41.74 46.4 21.45 43.43 21.45zM50.68 21.45L45.5 41.74 48.47 41.74 50.36 34.39 55.55 30.77 62.02 41.74 65.27 41.74 57.91 29.28 69.43 21.45 65.46 21.45 51.21 31.36 51.12 31.28 53.66 21.45 50.68 21.45z" />
+            </svg>
+
+            <!-- Info -->
+            <p class="info $(if error)alert$(endif)">
+              $(if error == "") Please log in to use the internet hotspot
+              service. $(if trial == 'yes')
+              <br />
+              Free trial available,
+              <a
+                href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">
+                click here
+              </a>
+              . $(endif) $(endif) $(if error)$(error)$(endif)
+            </p>
+
+            <!-- Username Input -->
+            <label>
+              <img class="ico" src="img/user.svg" alt="User Icon" />
+              <input
+                name="username"
+                type="text"
+                value="$(username)"
+                placeholder="Username" />
+            </label>
+
+            <!-- Password Input -->
+            <label>
+              <img class="ico" src="img/password.svg" alt="Password Icon" />
+              <input name="password" type="password" placeholder="Password" />
+            </label>
+
+            <!-- Buttons -->
+            <input type="submit" value="Connect" />
+            <button type="button" onclick="handleOnClick()">Signup</button>
+          </form>
+
+          <p class="info bt">Powered by MikroTik RouterOS</p>
+        </div>
+
+        <!-- Signup Form -->
+        <form
+          name="signupForm"
+          action="http://10.10.15.2:3000/api/capture"
+          method="post">
+          <input type="hidden" name="userMAC" value="$(mac)" />
+          <input type="hidden" name="hostRedirect" value="true" />
+          <input type="hidden" name="hostId" value="host_ap17af2" />
+          <input type="hidden" name="userIP" value="$(ip)" />
+          <input type="hidden" name="username" value="$(username)" />
+          <input type="hidden" name="linkLogin" value="$(link-login)" />
+          <input type="hidden" name="linkOrig" value="$(link-orig)" />
+          <input type="hidden" name="error" value="$(error)" />
+          <input type="hidden" name="chapId" value="$(chap-id)" />
+          <input type="hidden" name="chapChallenge" value="$(chap-challenge)" />
+          <input
+            type="hidden"
+            name="linkLoginOnly"
+            value="$(link-login-only)" />
+          <input type="hidden" name="linkOrigEsc" value="$(link-orig-esc)" />
+          <input type="hidden" name="macEsc" value="$(mac-esc)" />
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function handleOnClick() {
+        document.signupForm.submit();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+# Ignore node_modules and build artifacts
+node_modules/
+dist/
+build/
+
+# Ignore environment files
+.env
+.env.local
+
+# Ignore specific files
+package-lock.json
+yarn.lock
+
+# Ignore ESLint config if you don’t want Prettier to format it
+.eslintrc.json

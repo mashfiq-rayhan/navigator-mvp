@@ -1,0 +1,8 @@
+/* Floating blurred shapes using theme colors */
+.shape1 {
+  @apply absolute bg-primary rounded-full blur-[100px] w-[500px] h-[500px] top-[-250px] right-[-100px];
+}
+
+.shape2 {
+  @apply absolute bg-primary rounded-full blur-[100px] w-[400px] h-[400px] bottom-[-200px] left-[-100px];
+}

@@ -1,0 +1,54 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["node", "prettier", "unused-imports"],
+  "rules": {
+    "no-unused-vars": "off", // Turn off core ESLint rule
+    "unused-imports/no-unused-imports": "warn", // Enforce unused imports check
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-undef": "error",
+    "no-redeclare": "error",
+    "node/no-unpublished-require": "error",
+    "node/no-unsupported-features/es-syntax": "off",
+    "prettier/prettier": "off",
+    "eqeqeq": ["error", "always"],
+    "consistent-return": "off",
+    "camelcase": "error",
+    "no-trailing-spaces": "error",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 2],
+    "node/no-missing-import": [
+      "error",
+      {
+        "allowModules": ["express"]
+      }
+    ],
+    "node/no-unpublished-import": [
+      "error",
+      {
+        "allowModules": ["express"]
+      }
+    ],
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
+  }
+}
