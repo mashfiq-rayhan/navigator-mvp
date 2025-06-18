@@ -1,4 +1,4 @@
-
+## Project Description
 Navigator MVP is a full-stack HotSpot management system designed for MikroTik routers. It provides a modern, user-friendly web interface for managing user authentication, session control, and package selection for WiFi hotspot users.
 
 ### The project consists of two main components:
