@@ -1,5 +1,5 @@
 # Navigator MVP
-###Modern HotSpot Management for MikroTik Routers 🚀
+### Modern HotSpot Management for MikroTik Routers 🚀
 
 Navigator MVP is a robust HotSpot management system designed for MikroTik routers, featuring a seamless and user-friendly web interface for WiFi hotspot authentication, user onboarding, and package selection. The project is split into a Next.js frontend and an Express.js backend, ensuring a modern, scalable, and maintainable architecture.
 
